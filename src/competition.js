@@ -2,6 +2,29 @@ const home_scoring_base_chance = 0.115;
 const away_scoring_base_chance = 0.085;
 const random_scoring_attempts_min = 8;
 const random_scoring_attempts_max = 12;
+const surprise_factors = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 3];
+
+/*
+
+Doelpunten:
+KEEP: 1/121
+VER: 20/121
+MID: 40/121
+AANV: 60/121
+
+Geel:
+1/17
+8/17
+5/17
+3/17
+
+Rood:
+1/5
+2/5
+1/5
+1/5
+
+*/
 
 const competition = [
   {
@@ -143,5 +166,6 @@ export {
   away_scoring_base_chance,
   competition,
   random_scoring_attempts_min,
-  random_scoring_attempts_max
+  random_scoring_attempts_max,
+  surprise_factors
 };
