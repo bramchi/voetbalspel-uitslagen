@@ -35,7 +35,8 @@ import {
   post_on_debug,
   get_random_number,
   shuffle_array,
-  get_random_item
+  get_random_item,
+  get_weighted_random
 } from "./helpers.js";
 
 document
@@ -83,11 +84,11 @@ function simulate_match() {
   post_on_debug(2, team_2_score);
   teams[1].score = Math.round(team_2_score);
 
-  teams[0].yellows = get_random_item([0, 0, 0, 1, 1, 2, 2, 3]);
-  teams[0].reds = 1 === get_random_number(1, 10);
+  teams[0].yellows = get_random_item([0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 2, 2, 3]);
+  teams[0].reds = 1 === get_random_number(1, 15);
 
-  teams[1].yellows = get_random_item([0, 0, 0, 1, 1, 2, 2, 3]);
-  teams[1].reds = 1 === get_random_number(1, 10);
+  teams[1].yellows = get_random_item([0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 2, 2, 3]);
+  teams[1].reds = 1 === get_random_number(1, 15);
 
   const events_team_1 = get_events(teams[0]);
   const events_team_2 = get_events(teams[1]);
@@ -160,7 +161,7 @@ function get_events(team) {
   for (let i = 0; i < team.score; i++) {
     events.push({
       type: "goal",
-      name: get_random_player_name(team),
+      name: get_random_scoring_player_name(team),
       minute: get_random_game_minute()
     });
   }
@@ -168,7 +169,7 @@ function get_events(team) {
   for (let i = 0; i < team.yellows; i++) {
     events.push({
       type: "yellow",
-      name: get_random_player_name(team),
+      name: get_random_yellow_player_name(team),
       minute: get_random_game_minute()
     });
   }
@@ -176,7 +177,7 @@ function get_events(team) {
   for (let i = 0; i < team.reds; i++) {
     events.push({
       type: "red",
-      name: get_random_player_name(team),
+      name: get_random_red_player_name(team),
       minute: get_random_game_minute()
     });
   }
@@ -208,4 +209,82 @@ function get_events(team) {
   events.sort((a, b) => a.minute - b.minute);
 
   return events;
+}
+
+function get_random_scoring_player_name(team) {
+  const scoring_player_type = get_weighted_random([
+    {
+      name: "goalkeepers",
+      weight: 1
+    },
+    {
+      name: "defenders",
+      weight: 20
+    },
+    {
+      name: "midfielders",
+      weight: 40
+    },
+    {
+      name: "forwards",
+      weight: 60
+    }
+  ]).name;
+
+  const scoring_player = get_weighted_random(
+    team.players[scoring_player_type],
+    "strength"
+  );
+
+  return scoring_player.name;
+}
+
+function get_random_yellow_player_name(team) {
+  const player_type = get_weighted_random([
+    {
+      name: "goalkeepers",
+      weight: 1
+    },
+    {
+      name: "defenders",
+      weight: 8
+    },
+    {
+      name: "midfielders",
+      weight: 5
+    },
+    {
+      name: "forwards",
+      weight: 3
+    }
+  ]).name;
+
+  const player = get_random_item(team.players[player_type]);
+
+  return player.name;
+}
+
+function get_random_red_player_name(team) {
+  const player_type = get_weighted_random([
+    {
+      name: "goalkeepers",
+      weight: 1
+    },
+    {
+      name: "defenders",
+      weight: 2
+    },
+    {
+      name: "midfielders",
+      weight: 1
+    },
+    {
+      name: "forwards",
+      weight: 1
+    }
+  ]).name;
+
+  const player = get_random_item(team.players[player_type]);
+
+  return player.name;
 }

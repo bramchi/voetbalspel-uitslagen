@@ -45,11 +45,27 @@ function get_random_item(items) {
   return items[Math.floor(Math.random() * items.length)];
 }
 
+// https://stackoverflow.com/a/55671924/3566861
+function get_weighted_random(options, weight_property = "weight") {
+  var i,
+    weights = [];
+
+  for (i = 0; i < options.length; i++)
+    weights[i] = options[i][weight_property] + (weights[i - 1] || 0);
+
+  var random = Math.random() * weights[weights.length - 1];
+
+  for (i = 0; i < weights.length; i++) if (weights[i] > random) break;
+
+  return options[i];
+}
+
 export {
   get_random_number,
   shuffle_array,
   clear_scoreboards,
   post_on_scoreboard,
   post_on_debug,
-  get_random_item
+  get_random_item,
+  get_weighted_random
 };
