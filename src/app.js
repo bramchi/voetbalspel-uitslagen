@@ -46,36 +46,40 @@ function simulate_match() {
   clear_scoreboards();
 
   const teams = get_match_teams(competition);
-  const scoring_attempts = get_random_number(
+
+  // home team scoring
+  const team_1_scoring_attempts = get_random_number(
     random_scoring_attempts_min,
     random_scoring_attempts_max
   );
-
-  // home team scoring
   const team_1_surprise_factor = get_random_item(surprise_factors);
   const team_1_match_strength =
     ((teams[0].strength / teams[1].strength) * team_1_surprise_factor) /
-    scoring_attempts;
+    team_1_scoring_attempts;
   post_on_debug(
     1,
-    `(${home_scoring_base_chance} + ${team_1_match_strength} * ${team_1_surprise_factor}) * ${scoring_attempts}`
+    `(${home_scoring_base_chance} + ${team_1_match_strength} * ${team_1_surprise_factor}) * ${team_1_scoring_attempts}`
   );
   const team_1_score =
-    home_scoring_base_chance + team_1_match_strength * scoring_attempts;
+    home_scoring_base_chance + team_1_match_strength * team_1_scoring_attempts;
   post_on_debug(1, team_1_score);
   teams[0].score = Math.round(team_1_score);
 
   // away team scoring
+  const team_2_scoring_attempts = get_random_number(
+    random_scoring_attempts_min,
+    random_scoring_attempts_max
+  );
   const team_2_surprise_factor = get_random_item(surprise_factors);
   const team_2_match_strength =
     ((teams[1].strength / teams[0].strength) * team_2_surprise_factor) /
-    scoring_attempts;
+    team_2_scoring_attempts;
   post_on_debug(
     2,
-    `(${away_scoring_base_chance} + ${team_2_match_strength} * ${team_2_surprise_factor}) * ${scoring_attempts}`
+    `(${away_scoring_base_chance} + ${team_2_match_strength} * ${team_2_surprise_factor}) * ${team_2_scoring_attempts}`
   );
   const team_2_score =
-    away_scoring_base_chance + team_2_match_strength * scoring_attempts;
+    away_scoring_base_chance + team_2_match_strength * team_2_scoring_attempts;
   post_on_debug(2, team_2_score);
   teams[1].score = Math.round(team_2_score);
 
