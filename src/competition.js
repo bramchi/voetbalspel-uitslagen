@@ -2,7 +2,7 @@ const home_scoring_base_chance = 0.115;
 const away_scoring_base_chance = 0.085;
 const random_scoring_attempts_min = 8;
 const random_scoring_attempts_max = 12;
-const surprise_factors = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 3];
+const surprise_factors = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1.5, 2, 2.5];
 
 /*
 
