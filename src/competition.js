@@ -2,29 +2,63 @@ const home_scoring_base_chance = 0.115;
 const away_scoring_base_chance = 0.085;
 const random_scoring_attempts_min = 8;
 const random_scoring_attempts_max = 12;
-const surprise_factors = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1.5, 2, 2.5];
-
-/*
-
-Doelpunten:
-KEEP: 1/121
-VER: 20/121
-MID: 40/121
-AANV: 60/121
-
-Geel:
-1/17
-8/17
-5/17
-3/17
-
-Rood:
-1/5
-2/5
-1/5
-1/5
-
-*/
+const surprise_factors = [0.5, 0.75, 0.75, 1, 1, 1, 1, 1, 1, 1, 1, 1.5, 1.5, 2];
+const weights = {
+  scoring: [
+    {
+      name: "goalkeepers",
+      weight: 1
+    },
+    {
+      name: "defenders",
+      weight: 20
+    },
+    {
+      name: "midfielders",
+      weight: 40
+    },
+    {
+      name: "forwards",
+      weight: 60
+    }
+  ],
+  yellow: [
+    {
+      name: "goalkeepers",
+      weight: 1
+    },
+    {
+      name: "defenders",
+      weight: 8
+    },
+    {
+      name: "midfielders",
+      weight: 5
+    },
+    {
+      name: "forwards",
+      weight: 3
+    }
+  ],
+  red: [
+    {
+      name: "goalkeepers",
+      weight: 1
+    },
+    {
+      name: "defenders",
+      weight: 2
+    },
+    {
+      name: "midfielders",
+      weight: 1
+    },
+    {
+      name: "forwards",
+      weight: 1
+    }
+  ]
+};
 
 const competition = [
   {
@@ -167,5 +201,6 @@ export {
   competition,
   random_scoring_attempts_min,
   random_scoring_attempts_max,
-  surprise_factors
+  surprise_factors,
+  weights
 };

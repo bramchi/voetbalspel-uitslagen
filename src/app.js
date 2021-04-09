@@ -1,21 +1,15 @@
 /*
 
- __      __        _   _           _                _         _ _       _                         
- \ \    / /       | | | |         | |              | |       (_) |     | |                        
-  \ \  / /__   ___| |_| |__   __ _| |___ _ __   ___| |  _   _ _| |_ ___| | __ _  __ _  ___ _ __   
-   \ \/ / _ \ / _ \ __| '_ \ / _` | / __| '_ \ / _ \ | | | | | | __/ __| |/ _` |/ _` |/ _ \ '_ \  
-    \  / (_) |  __/ |_| |_) | (_| | \__ \ |_) |  __/ | | |_| | | |_\__ \ | (_| | (_| |  __/ | | | 
-     \/ \___/ \___|\__|_.__/ \__,_|_|___/ .__/ \___|_|  \__,_|_|\__|___/_|\__,_|\__, |\___|_| |_| 
-                                        | |                                      __/ |            
-                                        |_|                                     |___/             
+VOETBALSPEL UITSLAGEN GENERATOR
 
 TODO:
 - [x] thuisploeg heeft voordeel
 - [x] tegenstander weegt mee in teamsterkte
 - [x] gele & rode kaarten
 - [x] iemand die rood heeft gehad kan daarna niet meer scoren 
-- [ ] spelerssterkte bepaald wie er scoort
-- [ ] spelerstype bepaalt kans op geel/rood
+- [x] suprisefactor ook onder 1
+- [x] spelerssterkte bepaald wie er scoort
+- [x] spelerstype bepaalt kans op scoren/geel/rood
 - [ ] iemand die tweede keer geel krijgt kan daarna ook niet meer scoren
 
 */
@@ -27,7 +21,8 @@ import {
   competition,
   random_scoring_attempts_min,
   random_scoring_attempts_max,
-  surprise_factors
+  surprise_factors,
+  weights
 } from "./competition.js";
 import {
   clear_scoreboards,
@@ -124,18 +119,18 @@ function simulate_match() {
   });
 }
 
-function get_random_player_name(team) {
-  var all_players = [
-    team.players.goalkeepers,
-    team.players.defenders,
-    team.players.midfielders,
-    team.players.forwards
-  ].flat();
+// function get_random_player_name(team) {
+//   var all_players = [
+//     team.players.goalkeepers,
+//     team.players.defenders,
+//     team.players.midfielders,
+//     team.players.forwards
+//   ].flat();
 
-  shuffle_array(all_players);
+//   shuffle_array(all_players);
 
-  return all_players.splice(0, 1)[0].name;
-}
+//   return all_players.splice(0, 1)[0].name;
+// }
 
 function get_match_teams(teams) {
   let teams_copy = JSON.parse(JSON.stringify(teams));
@@ -182,6 +177,7 @@ function get_events(team) {
     });
   }
 
+  // remove invalid events
   let bad_events = [];
 
   events.forEach(function (goal, goalIndex) {
@@ -212,25 +208,7 @@ function get_events(team) {
 }
 
 function get_random_scoring_player_name(team) {
-  const scoring_player_type = get_weighted_random([
-    {
-      name: "goalkeepers",
-      weight: 1
-    },
-    {
-      name: "defenders",
-      weight: 20
-    },
-    {
-      name: "midfielders",
-      weight: 40
-    },
-    {
-      name: "forwards",
-      weight: 60
-    }
-  ]).name;
-
+  const scoring_player_type = get_weighted_random(weights.scoring).name;
   const scoring_player = get_weighted_random(
     team.players[scoring_player_type],
     "strength"
@@ -240,50 +218,14 @@ function get_random_scoring_player_name(team) {
 }
 
 function get_random_yellow_player_name(team) {
-  const player_type = get_weighted_random([
-    {
-      name: "goalkeepers",
-      weight: 1
-    },
-    {
-      name: "defenders",
-      weight: 8
-    },
-    {
-      name: "midfielders",
-      weight: 5
-    },
-    {
-      name: "forwards",
-      weight: 3
-    }
-  ]).name;
-
+  const player_type = get_weighted_random(weights.yellow).name;
   const player = get_random_item(team.players[player_type]);
 
   return player.name;
 }
 
 function get_random_red_player_name(team) {
-  const player_type = get_weighted_random([
-    {
-      name: "goalkeepers",
-      weight: 1
-    },
-    {
-      name: "defenders",
-      weight: 2
-    },
-    {
-      name: "midfielders",
-      weight: 1
-    },
-    {
-      name: "forwards",
-      weight: 1
-    }
-  ]).name;
-
+  const player_type = get_weighted_random(weights.red).name;
   const player = get_random_item(team.players[player_type]);
 
   return player.name;
