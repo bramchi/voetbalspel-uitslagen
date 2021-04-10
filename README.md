@@ -1,2 +1,1 @@
-# voetbalspel-uitslagen
-Created with CodeSandbox
+# Voetbalspel uitslagen generator

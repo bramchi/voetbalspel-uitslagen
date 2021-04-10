@@ -1,8 +1,68 @@
 const home_scoring_base_chance = 0.115;
 const away_scoring_base_chance = 0.085;
-const random_scoring_attempts_min = 8;
-const random_scoring_attempts_max = 12;
-const surprise_factors = [0.5, 0.75, 0.75, 1, 1, 1, 1, 1, 1, 1, 1, 1.5, 1.5, 2];
+const random_scoring_attempts_min = 7;
+const random_scoring_attempts_max = 14;
+
+/*
+16x     1,0 = Surprise Factor 0
+13x   +1,1 
+13x    -1,1 
+11x   +1,2
+11x    -1,2
+9x     +1,3
+9x      -1,3
+6x     +1,4
+6x      -1,4
+3x     +1,5
+3x      -1,5
+*/
+const surprise_factors = [
+  {
+    factor: 1,
+    weight: 16
+  },
+  {
+    factor: 1.1,
+    weight: 13
+  },
+  {
+    factor: 1.2,
+    weight: 11
+  },
+  {
+    factor: 1.3,
+    weight: 9
+  },
+  {
+    factor: 1.4,
+    weight: 6
+  },
+  {
+    factor: 1.5,
+    weight: 3
+  },
+  {
+    factor: 0.9,
+    weight: 13
+  },
+  {
+    factor: 0.8,
+    weight: 11
+  },
+  {
+    factor: 0.7,
+    weight: 9
+  },
+  {
+    factor: 0.6,
+    weight: 6
+  },
+  {
+    factor: 0.5,
+    weight: 3
+  }
+];
+
 const weights = {
   scoring: [
     {
