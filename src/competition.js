@@ -2,20 +2,6 @@ const home_scoring_base_chance = 0.115;
 const away_scoring_base_chance = 0.085;
 const random_scoring_attempts_min = 7;
 const random_scoring_attempts_max = 14;
-
-/*
-16x     1,0 = Surprise Factor 0
-13x   +1,1 
-13x    -1,1 
-11x   +1,2
-11x    -1,2
-9x     +1,3
-9x      -1,3
-6x     +1,4
-6x      -1,4
-3x     +1,5
-3x      -1,5
-*/
 const surprise_factors = [
   {
     factor: 1,
