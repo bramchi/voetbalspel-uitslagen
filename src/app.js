@@ -16,7 +16,7 @@ TODO:
 
 */
 
-import "./styles.css";
+import "../assets/css/styles.css";
 
 import { play_one_match } from "./play-one-match";
 import { test_several_matches } from "./test-several-matches";

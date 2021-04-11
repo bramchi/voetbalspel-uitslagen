@@ -1,11 +1,25 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
 body {
+  /* height: 100%; */
   font-size: 18px;
   line-height: 1.5;
   font-family: sans-serif;
+  background: url(./assets/images/voetbalveld.jpg) center no-repeat;
+  background-size: cover;
 }
 
-#app {
-  width: 100%;
+.app-wrapper {
+  background-color: rgba(255, 255, 255, 0.75);
+  border-radius: 5px;
 }
 
 button {
@@ -47,7 +61,7 @@ input {
 
 section {
   display: flex;
-  margin-bottom: 1em;
+  /* margin-bottom: 1em; */
 }
 
 section > div {
@@ -58,6 +72,10 @@ section > div {
 .debug {
   font-size: smaller;
   opacity: 0.5;
+}
+.debug:not(:empty),
+.result:not(:empty) {
+  padding: 5px;
 }
 .team {
   font-weight: bold;

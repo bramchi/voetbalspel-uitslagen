@@ -88,10 +88,9 @@ function generate_results() {
   teams[0].match_strength = teams[0].strength / teams[1].strength / 20;
 
   teams[0].score =
-    home_scoring_base_chance +
-    teams[0].match_strength *
-      teams[0].surprise_factor *
-      teams[0].scoring_attempts;
+    (home_scoring_base_chance + teams[0].match_strength) *
+    teams[0].surprise_factor *
+    teams[0].scoring_attempts;
 
   // away team scoring
   teams[1].scoring_attempts = get_random_number(
@@ -102,10 +101,9 @@ function generate_results() {
   teams[1].match_strength = teams[1].strength / teams[0].strength / 20;
 
   teams[1].score =
-    away_scoring_base_chance +
-    teams[1].match_strength *
-      teams[1].surprise_factor *
-      teams[1].scoring_attempts;
+    (away_scoring_base_chance + teams[1].match_strength) *
+    teams[1].surprise_factor *
+    teams[1].scoring_attempts;
 
   teams[0].score = Math.round(teams[0].score);
   teams[1].score = Math.round(teams[1].score);

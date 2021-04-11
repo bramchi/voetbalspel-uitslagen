@@ -1,4 +1,4 @@
-import { post_on_debug, clear_scoreboards } from "./helpers.js";
+import { post_on_scoreboard, clear_scoreboards } from "./helpers.js";
 import { generate_results } from "./play-one-match";
 
 function test_several_matches() {
@@ -28,7 +28,10 @@ function test_several_matches() {
   );
 
   scoring_players_sorted.forEach((scoring_event) => {
-    post_on_debug(1, `${scoring_event[0]} ${scoring_event[1]}`);
+    post_on_scoreboard(
+      1,
+      `${scoring_event[0]} ${scoring_event[1]} <div class="event --goal"></div>`
+    );
   });
 }
 
