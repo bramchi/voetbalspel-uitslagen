@@ -105,8 +105,8 @@ function generate_results() {
     teams[1].surprise_factor *
     teams[1].scoring_attempts;
 
-  teams[0].score = Math.round(teams[0].score);
-  teams[1].score = Math.round(teams[1].score);
+  teams[0].score = Math.floor(teams[0].score);
+  teams[1].score = Math.floor(teams[1].score);
 
   teams[0].yellows = get_random_item([0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 2, 2, 3]);
   teams[0].reds = 1 === get_random_number(1, 15);
@@ -164,19 +164,30 @@ function create_events_from_stats(team) {
     });
   }
 
-  // remove invalid events
+  // remove goals from player who got red or double yellow
   let bad_events = [];
 
   events.forEach(function (goal, goalIndex) {
     if (goal.type === "goal") {
-      const bad_event_index = events.findIndex(
+      const goal_after_red = events.findIndex(
         (event) =>
           event.name === goal.name &&
           event.minute < goal.minute &&
           event.type === "red"
       );
 
-      if (bad_event_index > -1) {
+      if (goal_after_red > -1) {
+        bad_events.push(goalIndex);
+      }
+
+      const goal_after_double_yellow = events.findIndex(
+        (event) =>
+          event.name === goal.name &&
+          event.minute < goal.minute &&
+          event.type === "yellow"
+      );
+
+      if (goal_after_double_yellow > -1) {
         bad_events.push(goalIndex);
       }
     }
@@ -185,8 +196,6 @@ function create_events_from_stats(team) {
   bad_events.forEach(function (bad_event_index) {
     delete events[bad_event_index];
   });
-
-  // todo: remove goals from a player after a red card
 
   events.sort((a, b) => a.minute - b.minute);
 

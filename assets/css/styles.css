@@ -17,15 +17,26 @@ body {
   background-size: cover;
 }
 
-.app-wrapper {
+body:before {
+  content: "";
+  position: absolute;
+  z-index: 9;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   background-color: rgba(255, 255, 255, 0.75);
-  border-radius: 5px;
+}
+
+.app-wrapper {
+  position: relative;
+  z-index: 10;
 }
 
 button {
   margin-bottom: 1em;
   border: 0 solid;
-  background-color: hsl(0deg, 0%, 90%);
+  background-color: hsl(0deg, 0%, 80%);
   color: black;
   font-size: 16px;
   border-radius: 10px;
@@ -37,7 +48,7 @@ button {
 button:hover,
 button:focus,
 button:active {
-  background-color: hsl(0deg, 0%, 80%);
+  background-color: hsl(0deg, 0%, 70%);
 }
 
 button.--primary {
@@ -54,9 +65,15 @@ button.--primary:active {
   font-weight: 700;
 }
 
-input {
-  font-size: 20px;
-  width: 65px;
+input[type="number"] {
+  font-size: 18px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 6px;
+  width: 75px;
+  height: 39px;
+  border-radius: 5px;
+  border: 0 solid;
 }
 
 section {
@@ -72,10 +89,6 @@ section > div {
 .debug {
   font-size: smaller;
   opacity: 0.5;
-}
-.debug:not(:empty),
-.result:not(:empty) {
-  padding: 5px;
 }
 .team {
   font-weight: bold;
