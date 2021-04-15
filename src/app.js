@@ -3,16 +3,9 @@
 VOETBALSPEL UITSLAGEN GENERATOR
 
 TODO:
-- [x] thuisploeg heeft voordeel
-- [x] tegenstander weegt mee in teamsterkte
-- [x] gele & rode kaarten
-- [x] iemand die rood heeft gehad kan daarna niet meer scoren 
-- [x] suprisefactor ook onder 1
-- [x] spelerssterkte bepaald wie er scoort
-- [x] spelerstype bepaalt kans op scoren/geel/rood
-- [ ] update verhoudingen met nieuwe berekening van jaap
-- [ ] voeg wedstrijd tests toe die laten zien of de beste speler ook 't vaakst scoort gemiddeld genomen over een groot aantal wedstrijden
-- [ ] iemand die tweede keer geel krijgt kan daarna ook niet meer scoren
+- [x] iemand die tweede keer geel krijgt kan daarna ook niet meer scoren, iemand die rood krijgt kan niet nog een keer rood krijgen, iemand die geel krijg na rood kan niet etc
+- [x] score naar beneden afronden
+- [ ] doelpunten na rood of dubbel geel worden weggehaald en kloppen niet meer met de score
 
 */
 

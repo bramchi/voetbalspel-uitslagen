@@ -164,31 +164,119 @@ function create_events_from_stats(team) {
     });
   }
 
-  // remove goals from player who got red or double yellow
+  // Remove impossible events like:
+  // - goal from player who got red
+  // - goal from player who got double yellow
+  // - red cards for player who already has one
+  // - yellow card for player who already has two
   let bad_events = [];
 
-  events.forEach(function (goal, goalIndex) {
-    if (goal.type === "goal") {
-      const goal_after_red = events.findIndex(
-        (event) =>
-          event.name === goal.name &&
-          event.minute < goal.minute &&
-          event.type === "red"
+  events.forEach(function (event, eventIndex) {
+    if (event.type === "goal") {
+      const red_before_goal = events.findIndex(
+        (otherEvent) =>
+          otherEvent.name === event.name &&
+          otherEvent.minute < event.minute &&
+          otherEvent.type === "red"
       );
 
-      if (goal_after_red > -1) {
-        bad_events.push(goalIndex);
+      if (red_before_goal > -1) {
+        // console.log("remove goal after red", events[eventIndex]);
+        bad_events.push(eventIndex);
       }
 
-      const goal_after_double_yellow = events.findIndex(
-        (event) =>
-          event.name === goal.name &&
-          event.minute < goal.minute &&
-          event.type === "yellow"
+      const first_yellow_before_goal = events.findIndex(
+        (otherEvent) =>
+          otherEvent.name === event.name &&
+          otherEvent.minute < event.minute &&
+          otherEvent.type === "yellow"
       );
 
-      if (goal_after_double_yellow > -1) {
-        bad_events.push(goalIndex);
+      if (first_yellow_before_goal > -1) {
+        const second_yellow_before_goal = events.findIndex(
+          (otherEvent) =>
+            otherEvent.name === event.name &&
+            otherEvent.minute < event.minute &&
+            otherEvent.minute !== events[first_yellow_before_goal].minute &&
+            otherEvent.type === "yellow"
+        );
+
+        if (second_yellow_before_goal > -1) {
+          // console.log("remove goal after double yellow", events[eventIndex]);
+          bad_events.push(eventIndex);
+        }
+      }
+    }
+
+    if (event.type === "red") {
+      const red_before_red = events.findIndex(
+        (otherEvent) =>
+          otherEvent.name === event.name &&
+          otherEvent.minute < event.minute &&
+          otherEvent.type === "red"
+      );
+
+      if (red_before_red > -1) {
+        // console.log("remove red after red", events[eventIndex]);
+        bad_events.push(eventIndex);
+      }
+
+      const yellow_before_red = events.findIndex(
+        (otherEvent) =>
+          otherEvent.name === event.name &&
+          otherEvent.minute < event.minute &&
+          otherEvent.type === "yellow"
+      );
+
+      if (yellow_before_red > -1) {
+        const other_yellow_before_red = events.findIndex(
+          (otherEvent) =>
+            otherEvent.name === event.name &&
+            otherEvent.minute < event.minute &&
+            otherEvent.minute !== events[yellow_before_red].minute &&
+            otherEvent.type === "yellow"
+        );
+
+        if (other_yellow_before_red > -1) {
+          // console.log("remove red after double yellow", events[eventIndex]);
+          bad_events.push(eventIndex);
+        }
+      }
+    }
+
+    if (event.type === "yellow") {
+      const yellow_before_yellow = events.findIndex(
+        (otherEvent) =>
+          otherEvent.name === event.name &&
+          otherEvent.minute < event.minute &&
+          otherEvent.type === "yellow"
+      );
+
+      if (yellow_before_yellow > -1) {
+        const other_yellow_before_yellow = events.findIndex(
+          (otherEvent) =>
+            otherEvent.name === event.name &&
+            otherEvent.minute < event.minute &&
+            otherEvent.minute !== events[yellow_before_yellow].minute &&
+            otherEvent.type === "yellow"
+        );
+
+        if (other_yellow_before_yellow > -1) {
+          // console.log("remove yellow after double yellow", events[eventIndex]);
+          bad_events.push(eventIndex);
+        }
+      }
+
+      const red_before_yellow = events.findIndex(
+        (otherEvent) =>
+          otherEvent.name === event.name &&
+          otherEvent.minute < event.minute &&
+          otherEvent.type === "red"
+      );
+
+      if (red_before_yellow > -1) {
+        // console.log("remove yellow after red", events[eventIndex]);
+        bad_events.push(eventIndex);
       }
     }
   });
