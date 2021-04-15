@@ -6,7 +6,7 @@
 
 html {
   height: 100vh;
-  /* background: url(./assets/images/voetbalveld.jpg) center no-repeat; */
+  background: url(./assets/images/voetbalveld.jpg) center no-repeat;
   background-size: cover;
 }
 
