@@ -1,12 +1,12 @@
 import {
   home_scoring_base_chance,
   away_scoring_base_chance,
-  competition,
+  german_competition,
   random_scoring_attempts_min,
   random_scoring_attempts_max,
   surprise_factors,
   weights
-} from "./competition.js";
+} from "./german-competition.js";
 import {
   clear_scoreboards,
   post_on_scoreboard,
@@ -17,10 +17,10 @@ import {
   get_weighted_random
 } from "./helpers.js";
 
-function play_one_match() {
+function play_one_german_match() {
   clear_scoreboards();
 
-  const teams = generate_results();
+  const teams = generate_german_results();
 
   /*
 
@@ -76,8 +76,8 @@ function play_one_match() {
   });
 }
 
-function generate_results() {
-  let teams = get_match_teams(competition);
+function generate_german_results() {
+  let teams = get_two_match_teams(german_competition);
 
   // home team scoring
   teams[0].scoring_attempts = get_random_number(
@@ -119,7 +119,7 @@ function generate_results() {
   return teams;
 }
 
-function get_match_teams(teams) {
+function get_two_match_teams(teams) {
   let teams_copy = JSON.parse(JSON.stringify(teams));
 
   shuffle_array(teams_copy);
@@ -314,4 +314,4 @@ function get_random_red_player_name(team) {
   return player.name;
 }
 
-export { play_one_match, generate_results };
+export { play_one_german_match, generate_german_results };

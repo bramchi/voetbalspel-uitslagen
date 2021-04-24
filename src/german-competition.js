@@ -106,7 +106,7 @@ const weights = {
   ]
 };
 
-const competition = [
+const german_competition = [
   {
     name: "FC Bayern München",
     strength: 91,
@@ -244,7 +244,7 @@ const competition = [
 export {
   home_scoring_base_chance,
   away_scoring_base_chance,
-  competition,
+  german_competition,
   random_scoring_attempts_min,
   random_scoring_attempts_max,
   surprise_factors,

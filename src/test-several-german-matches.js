@@ -1,13 +1,13 @@
 import { post_on_scoreboard, clear_scoreboards } from "./helpers.js";
-import { generate_results } from "./play-one-match";
+import { generate_german_results } from "./play-one-german-match";
 
-function test_several_matches() {
+function test_several_german_matches() {
   clear_scoreboards();
   const amount_of_matches = document.querySelector("input[type=number]").value;
 
   let scoring_players = {};
   for (let i = 1; i <= amount_of_matches; i++) {
-    const teams = generate_results();
+    const teams = generate_german_results();
 
     teams.forEach((team) => {
       team.events.forEach((event) => {
@@ -35,4 +35,4 @@ function test_several_matches() {
   });
 }
 
-export { test_several_matches };
+export { test_several_german_matches };
