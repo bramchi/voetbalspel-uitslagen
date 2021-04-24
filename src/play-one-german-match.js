@@ -56,6 +56,8 @@ function play_one_german_match() {
     `<div class="team">${teams[0].name} <div class="score">${teams[0].score}</div></div>`
   );
 
+  console.log(teams[0].events);
+
   teams[0].events.forEach(function (event) {
     post_on_scoreboard(
       1,

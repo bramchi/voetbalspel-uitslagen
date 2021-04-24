@@ -11,8 +11,8 @@ TODO:
     - [ ] teams krijgen europa strength naast local strength
     - [x] on load & reset knop voor europa loting: kies 3 duitse clubs voor champions league en 3 duitse clubs voor europa league
     - [x] toon gelotte europa teams altijd in beeld
-    - [ ] knop voor champions league wedstrijd
-    - [ ] knop voor europa league wedstrijd
+    - [x knop voor champions league wedstrijd
+    - [x] knop voor europa league wedstrijd
 
 */
 
@@ -31,10 +31,20 @@ document
   .querySelector(".play-several-german-matches-button")
   .addEventListener("click", test_several_german_matches, false);
 
-document.querySelector(".play-one-euro-match-button").addEventListener(
+document
+  .querySelector(".play-one-champions-league-match-button")
+  .addEventListener(
+    "click",
+    function () {
+      play_one_euro_match(euro_teams, "champions-league");
+    },
+    false
+  );
+
+document.querySelector(".play-one-europe-league-match-button").addEventListener(
   "click",
   function () {
-    play_one_euro_match(euro_teams, "champions-league");
+    play_one_euro_match(euro_teams, "europe-league");
   },
   false
 );

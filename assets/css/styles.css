@@ -53,6 +53,16 @@ button.--primary:active {
   background-color: rgb(65, 195, 97);
 }
 
+button.--euro {
+  background-color: hsl(214, 87%, 71%);
+}
+
+button.--euro:hover,
+button.--euro:focus,
+button.--euro:active {
+  background-color: hsl(214, 69%, 59%);
+}
+
 #log {
   font-weight: 700;
 }
@@ -108,4 +118,8 @@ section > div {
 .event.--red {
   background-color: red;
   border: 1px solid #333;
+}
+.result.--euro {
+  font-size: 14px;
+  color: hsl(214, 63%, 48%);
 }

@@ -1,4 +1,5 @@
 import { generate_german_results } from "./play-one-german-match";
+import { clear_scoreboards } from "./helpers.js";
 
 function pick_euro_teams() {
   const amount_of_matches = 34;
@@ -34,12 +35,14 @@ function pick_euro_teams() {
     (a, b) => b.score - a.score
   );
 
+  clear_scoreboards();
+
   document.getElementById(
     "champions_league_teams"
-  ).innerHTML = `<strong>Champions league</strong><br>1. ${team_scores_sorted[0].name} ${team_scores_sorted[0].score}<br>2. ${team_scores_sorted[1].name} ${team_scores_sorted[1].score}<br>3. ${team_scores_sorted[2].name} ${team_scores_sorted[2].score}`;
+  ).innerHTML = `<strong>Champions League</strong><br>1. ${team_scores_sorted[0].name} (${team_scores_sorted[0].score})<br>2. ${team_scores_sorted[1].name} (${team_scores_sorted[1].score})<br>3. ${team_scores_sorted[2].name} (${team_scores_sorted[2].score})`;
   document.getElementById(
     "europe_league_teams"
-  ).innerHTML = `<strong>Europa league</strong><br>4. ${team_scores_sorted[3].name} ${team_scores_sorted[3].score}<br>5. ${team_scores_sorted[4].name} ${team_scores_sorted[4].score}<br>6. ${team_scores_sorted[5].name} ${team_scores_sorted[5].score}`;
+  ).innerHTML = `<strong>Europa League</strong><br>4. ${team_scores_sorted[3].name} (${team_scores_sorted[3].score})<br>5. ${team_scores_sorted[4].name} (${team_scores_sorted[4].score})<br>6. ${team_scores_sorted[5].name} (${team_scores_sorted[5].score})`;
 
   return team_scores_sorted;
 }

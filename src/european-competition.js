@@ -1,4 +1,6 @@
-const champions_league = [
+const european_competition = {};
+
+european_competition["champions-league"] = [
   {
     name: "FC Barcelona",
     strength: 91
@@ -17,7 +19,7 @@ const champions_league = [
   }
 ];
 
-const europa_league = [
+european_competition["europe-league"] = [
   {
     name: "Ajax",
     strength: 91
@@ -36,4 +38,4 @@ const europa_league = [
   }
 ];
 
-export { champions_league, europa_league };
+export { european_competition };

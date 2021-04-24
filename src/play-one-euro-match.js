@@ -1,12 +1,12 @@
 import {
   home_scoring_base_chance,
   away_scoring_base_chance,
-  german_competition,
   random_scoring_attempts_min,
   random_scoring_attempts_max,
   surprise_factors,
   weights
 } from "./german-competition.js";
+import { european_competition } from "./european-competition.js";
 import {
   clear_scoreboards,
   post_on_scoreboard,
@@ -18,13 +18,7 @@ import {
 } from "./helpers.js";
 
 function play_one_euro_match(euro_teams, match_type) {
-  const teams = generate_euro_results(
-    german_competition,
-    euro_teams,
-    match_type
-  );
-
-  console.log(teams);
+  const teams = generate_euro_results(euro_teams, match_type);
 
   clear_scoreboards();
 
@@ -75,16 +69,17 @@ function play_one_euro_match(euro_teams, match_type) {
   );
 }
 
-function generate_euro_results(german_competition, euro_teams, match_type) {
-  let german_competition_selection;
+function generate_euro_results(euro_teams, match_type) {
+  let euro_teams_selection;
   if (match_type === "champions-league") {
-    german_competition_selection = german_competition.slice(0, 2);
+    euro_teams_selection = euro_teams.slice(0, 3);
   } else {
-    german_competition_selection = german_competition.slice(3, 5);
+    euro_teams_selection = euro_teams.slice(3, 6);
   }
+
   let teams = [
-    get_match_team(german_competition_selection),
-    get_match_team(euro_teams)
+    get_match_team(euro_teams_selection),
+    get_match_team(european_competition[match_type])
   ];
 
   // home team scoring
