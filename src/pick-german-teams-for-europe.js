@@ -1,54 +1,31 @@
-import { generate_german_results } from "./play-one-german-match";
+import { german_competition } from "./german-competition.js";
 import { clear_scoreboards } from "./helpers.js";
+import { get_random_number } from "./helpers.js";
 
 function pick_german_teams_for_europe() {
-  const amount_of_matches = 34;
   document.getElementById("champions_league_teams").innerHTML = "";
-  let competition_results = [];
 
-  for (let i = 1; i <= amount_of_matches; i++) {
-    const teams_results = generate_german_results();
+  let german_teams = german_competition;
 
-    console.log(teams_results);
+  // add/remove a bit of strength from each team randomly
+  german_teams.forEach((team, index) => {
+    german_teams[index].strength += get_random_number(-15, 15);
+  });
 
-    teams_results.forEach((team, index) => {
-      let team_index = competition_results.findIndex((element) => {
-        if (element.name === team.name) {
-          return true;
-        }
-
-        return false;
-      });
-
-      if (team_index === -1) {
-        competition_results.push({
-          ...teams_results[index],
-          score: 1
-        });
-      } else {
-        competition_results[team_index].score =
-          competition_results[team_index].score + 1;
-      }
-    });
-  }
-
-  // let team_scores_entries = Object.entries(team_scores);
-  const team_scores_sorted = competition_results.sort(
-    (a, b) => b.score - a.score
+  const german_teams_sorted = german_teams.sort(
+    (a, b) => b.strength - a.strength
   );
-
-  console.log(team_scores_sorted);
 
   clear_scoreboards();
 
   document.getElementById(
     "champions_league_teams"
-  ).innerHTML = `<strong>Champions League</strong><br>1. ${team_scores_sorted[0].name} (${team_scores_sorted[0].score})<br>2. ${team_scores_sorted[1].name} (${team_scores_sorted[1].score})<br>3. ${team_scores_sorted[2].name} (${team_scores_sorted[2].score})`;
+  ).innerHTML = `<strong>Champions League</strong><br>1. ${german_teams_sorted[0].name} (${german_teams_sorted[0].strength})<br>2. ${german_teams_sorted[1].name} (${german_teams_sorted[1].strength})<br>3. ${german_teams_sorted[2].name} (${german_teams_sorted[2].strength})`;
   document.getElementById(
     "europe_league_teams"
-  ).innerHTML = `<strong>Europa League</strong><br>4. ${team_scores_sorted[3].name} (${team_scores_sorted[3].score})<br>5. ${team_scores_sorted[4].name} (${team_scores_sorted[4].score})<br>6. ${team_scores_sorted[5].name} (${team_scores_sorted[5].score})`;
+  ).innerHTML = `<strong>Europa League</strong><br>4. ${german_teams_sorted[3].name} (${german_teams_sorted[3].strength})<br>5. ${german_teams_sorted[4].name} (${german_teams_sorted[4].strength})<br>6. ${german_teams_sorted[5].name} (${german_teams_sorted[5].strength})`;
 
-  return team_scores_sorted;
+  return german_teams_sorted;
 }
 
 export { pick_german_teams_for_europe };
