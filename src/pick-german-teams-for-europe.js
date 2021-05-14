@@ -1,13 +1,15 @@
 import { generate_german_results } from "./play-one-german-match";
 import { clear_scoreboards } from "./helpers.js";
 
-function pick_euro_teams() {
+function pick_german_teams_for_europe() {
   const amount_of_matches = 34;
   document.getElementById("champions_league_teams").innerHTML = "";
-
   let competition_results = [];
+
   for (let i = 1; i <= amount_of_matches; i++) {
     const teams_results = generate_german_results();
+
+    console.log(teams_results);
 
     teams_results.forEach((team, index) => {
       let team_index = competition_results.findIndex((element) => {
@@ -35,6 +37,8 @@ function pick_euro_teams() {
     (a, b) => b.score - a.score
   );
 
+  console.log(team_scores_sorted);
+
   clear_scoreboards();
 
   document.getElementById(
@@ -47,4 +51,4 @@ function pick_euro_teams() {
   return team_scores_sorted;
 }
 
-export { pick_euro_teams };
+export { pick_german_teams_for_europe };

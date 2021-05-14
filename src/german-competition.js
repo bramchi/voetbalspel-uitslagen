@@ -502,28 +502,6 @@ const german_competition = [
         { name: "Thuram", strength: 78 }
       ]
     }
-  },
-  {
-    name: "Hertha BSC",
-    strength: 49,
-    players: {
-      goalkeepers: [{ name: "Schwolow", strength: 39 }],
-      defenders: [
-        { name: "Stark", strength: 49 },
-        { name: "Klünter", strength: 42 },
-        { name: "Dardai", strength: 53 }
-      ],
-      midfielders: [
-        { name: "Tousart", strength: 60 },
-        { name: "Darida", strength: 51 },
-        { name: "Mittelstädt", strength: 40 }
-      ],
-      forwards: [
-        { name: "Cordoba", strength: 43 },
-        { name: "Cunha", strength: 65 },
-        { name: "Piatek", strength: 50 }
-      ]
-    }
   }
 ];
 
