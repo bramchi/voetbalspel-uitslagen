@@ -16,6 +16,12 @@ function shuffle_array(arr) {
   }
 }
 
+function increase_match_counter() {
+  let counterElement = document.querySelector(".match-counter-value").innerHTML;
+  let counterValue = parseFloat(counterElement);
+  document.querySelector(".match-counter-value").innerHTML = counterValue + 1;
+}
+
 function clear_scoreboards() {
   debug[1].innerHTML = "";
   debug[2].innerHTML = "";
@@ -67,5 +73,6 @@ export {
   post_on_scoreboard,
   post_on_debug,
   get_random_item,
-  get_weighted_random
+  get_weighted_random,
+  increase_match_counter
 };

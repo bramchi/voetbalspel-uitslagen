@@ -14,7 +14,8 @@ import {
   get_random_number,
   shuffle_array,
   get_random_item,
-  get_weighted_random
+  get_weighted_random,
+  increase_match_counter
 } from "./helpers.js";
 
 function play_one_euro_match(euro_teams, match_type) {
@@ -67,6 +68,8 @@ function play_one_euro_match(euro_teams, match_type) {
     2,
     `<img class="logo" src="assets/images/logos/${teams[1].logo}"><div class="team">${teams[1].name} <div class="score">${teams[0].score}</div></div>`
   );
+
+  increase_match_counter();
 }
 
 function generate_euro_results(euro_teams, match_type) {
@@ -126,8 +129,6 @@ function get_match_team(teams) {
   const team = teams_copy.splice(0, 1)[0];
 
   team.score = 0;
-
-  console.log(team);
 
   return team;
 }

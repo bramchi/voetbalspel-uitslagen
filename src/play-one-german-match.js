@@ -14,7 +14,8 @@ import {
   get_random_number,
   shuffle_array,
   get_random_item,
-  get_weighted_random
+  get_weighted_random,
+  increase_match_counter
 } from "./helpers.js";
 
 function play_one_german_match() {
@@ -74,6 +75,8 @@ function play_one_german_match() {
       `<div class="event"><div class="minute">${event.minute}'</div> ${event.name} <div class="eventtype --${event.type}"></div></div>`
     );
   });
+
+  increase_match_counter();
 }
 
 function generate_german_results() {

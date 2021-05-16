@@ -119,6 +119,8 @@ section {
 }
 .team {
   font-weight: bold;
+  text-align: center;
+  margin-bottom: 1rem;
 }
 .score {
   font-size: 3em;
@@ -130,7 +132,7 @@ section {
 .logo {
   display: block;
   margin: 0 auto 1rem;
-  height: 100px;
+  height: 70px;
 }
 .eventtype.--goal::after {
   content: "⚽";
@@ -149,6 +151,6 @@ section {
   background-color: red;
   border: 1px solid #333;
 }
-.game-counter {
+.match-counter {
   font-weight: 700;
 }
