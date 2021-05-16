@@ -32,7 +32,7 @@ button {
   border: 0 solid;
   background-color: hsl(0deg, 0%, 80%);
   color: black;
-  font-size: 16px;
+  font-size: clamp(14px, 2vw, 18px);
   border-radius: 10px;
   padding: 10px 15px;
   transition: background-color 0.2s ease;
@@ -91,8 +91,8 @@ section {
 .debug,
 .result,
 .europa-teams {
-  min-width: 14rem;
   margin-right: 1rem;
+  width: 50%;
 }
 
 .debug {
@@ -115,7 +115,18 @@ section {
   color: hsl(214, 63%, 48%);
   padding: 0rem;
   border: 0 solid;
-  min-width: initial;
+}
+
+@media (min-width: 769px) {
+  .debug,
+  .result,
+  .europa-teams {
+    min-width: 15rem;
+    width: initial;
+  }
+  .europa-teams {
+    min-width: initial;
+  }
 }
 .team {
   font-weight: bold;
@@ -125,15 +136,21 @@ section {
 .score {
   font-size: 3em;
 }
+
+.debug-controls {
+}
+
 .minute {
   width: 2em;
   display: inline-block;
 }
+
 .logo {
   display: block;
   margin: 0 auto 1rem;
   height: 70px;
 }
+
 .eventtype.--goal::after {
   content: "⚽";
 }
@@ -151,6 +168,7 @@ section {
   background-color: red;
   border: 1px solid #333;
 }
+
 .match-counter {
   font-weight: 700;
 }

@@ -22,9 +22,6 @@
         Europa League
       </button>
 
-      <input type="checkbox" id="display_debug_info" />
-      <label for="display_debug_info">Debug options</label>
-
       <span class="debug-info">
         <button class="play-several-german-matches-button">
           Test Bundesliga
@@ -51,10 +48,15 @@
         </div>
       </section>
 
-      <section>
+      <section style="margin-bottom: 1rem;">
         <div id="champions_league_teams" class="europa-teams"></div>
         <div id="europe_league_teams" class="europa-teams"></div>
       </section>
+
+      <div class="debug-controls">
+        <input type="checkbox" id="display_debug_info" />
+        <label for="display_debug_info">show debug info</label>
+      </div>
     </div>
 
     <script src="src/app.js"></script>
