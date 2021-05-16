@@ -13,33 +13,47 @@
   <body>
     <div class="app-wrapper">
       <button class="--primary play-one-german-match-button">
-        Bundesliga wedstrijd
+        Bundesliga
       </button>
       <button class="--euro play-one-champions-league-match-button">
-        Champions League wedstrijd
+        Champions League
       </button>
       <button class="--euro play-one-europe-league-match-button">
-        Europa League wedstrijd</button
-      ><br />
-      <button class="play-several-german-matches-button">
-        Test Bundesliga
+        Europa League
       </button>
-      X <input type="number" value="10" />
-      <button class="reset-euro-teams-button">
-        Reset Bundesliga-in-Europa teams
-      </button>
-      <section style="margin-bottom: 1rem;">
-        <div id="champions_league_teams" class="result --euro"></div>
-        <div id="europe_league_teams" class="result --euro"></div>
-      </section>
+
+      <input type="checkbox" id="display_debug_info" />
+      <label for="display_debug_info">Debug options</label>
+
+      <span class="debug-info">
+        <button class="play-several-german-matches-button">
+          Test Bundesliga
+        </button>
+        X <input type="number" value="10" />
+        <button class="reset-euro-teams-button">
+          Reset Europa kwalificatie
+        </button>
+      </span>
+
       <section>
-        <div id="debug_1" class="debug"></div>
-        <div id="debug_2" class="debug"></div>
+        <div id="debug_1" class="debug debug-info"></div>
+        <div id="debug_2" class="debug debug-info"></div>
       </section>
 
       <section>
         <div id="result_1" class="result"></div>
         <div id="result_2" class="result"></div>
+      </section>
+
+      <section style="margin-bottom: 1rem;">
+        <div id="champions_league_teams" class="europa-teams"></div>
+        <div id="europe_league_teams" class="europa-teams"></div>
+      </section>
+
+      <section>
+        <div class="game-counter">
+          <span class="game-counter-value">0</span> wedstrijden gespeeld
+        </div>
       </section>
     </div>
 

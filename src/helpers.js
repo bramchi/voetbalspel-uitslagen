@@ -26,18 +26,18 @@ function clear_scoreboards() {
 const post_on_scoreboard = function (number, message) {
   if (typeof message === "object") {
     scoreboard[number].innerHTML +=
-      (JSON && JSON.stringify ? JSON.stringify(message) : message) + "<br />";
+      JSON && JSON.stringify ? JSON.stringify(message) : message;
   } else {
-    scoreboard[number].innerHTML += message + "<br />";
+    scoreboard[number].innerHTML += message;
   }
 };
 
 const post_on_debug = function (number, message) {
   if (typeof message === "object") {
     debug[number].innerHTML +=
-      (JSON && JSON.stringify ? JSON.stringify(message) : message) + "<br />";
+      JSON && JSON.stringify ? JSON.stringify(message) : message;
   } else {
-    debug[number].innerHTML += message + "<br />";
+    debug[number].innerHTML += message;
   }
 };
 

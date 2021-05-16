@@ -53,19 +53,19 @@ function play_one_euro_match(euro_teams, match_type) {
 
   post_on_scoreboard(
     1,
-    `<div class="team">${teams[0].name} <div class="score">${teams[0].score}</div></div>`
+    `<img class="logo" src="assets/images/logos/${teams[0].logo}"><div class="team">${teams[0].name} <div class="score">${teams[0].score}</div></div>`
   );
 
   teams[0].events.forEach(function (event) {
     post_on_scoreboard(
       1,
-      `<div class="minute">${event.minute}'</div> ${event.name} <div class="event --${event.type}"></div>`
+      `<div class="event"><div class="minute">${event.minute}'</div> ${event.name} <div class="eventtype --${event.type}"></div></div>`
     );
   });
 
   post_on_scoreboard(
     2,
-    `<div class="team">${teams[1].name} <div class="score">${teams[1].score}</div></div>`
+    `<img class="logo" src="assets/images/logos/${teams[1].logo}"><div class="team">${teams[1].name} <div class="score">${teams[0].score}</div></div>`
   );
 }
 

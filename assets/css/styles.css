@@ -4,19 +4,21 @@
   box-sizing: border-box;
 }
 
+:root {
+  --display-debug-info: none;
+}
+
 html {
   height: 100vh;
-  background: url(./assets/images/voetbalveld.jpg) center no-repeat;
-  background-size: cover;
 }
 
 body {
   margin: 0;
   padding: 1rem;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.5;
   font-family: sans-serif;
-  background-color: rgba(255, 255, 255, 0.75);
+  background-color: rgb(255, 252, 217);
   height: 100vh;
 }
 
@@ -35,6 +37,10 @@ button {
   padding: 10px 15px;
   transition: background-color 0.2s ease;
   cursor: pointer;
+}
+
+label {
+  font-size: 16px;
 }
 
 button:hover,
@@ -74,23 +80,42 @@ input[type="number"] {
   padding-left: 6px;
   width: 75px;
   height: 39px;
-  border-radius: 5px;
-  border: 0 solid;
+  border-radius: 10px;
+  border: 1px solid #aaa;
 }
 
 section {
   display: flex;
-  /* margin-bottom: 1em; */
 }
 
-section > div {
-  width: 50%;
-  margin-right: 2rem;
+.debug,
+.result,
+.europa-teams {
+  min-width: 14rem;
+  margin-right: 1rem;
 }
 
 .debug {
   font-size: smaller;
   opacity: 0.5;
+}
+.debug-info {
+  display: var(--display-debug-info);
+}
+.result:not(:empty) {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  border: 1px solid #333;
+  background-color: white;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+  border-radius: 6px;
+}
+.europa-teams {
+  font-size: 14px;
+  color: hsl(214, 63%, 48%);
+  padding: 0rem;
+  border: 0 solid;
+  min-width: initial;
 }
 .team {
   font-weight: bold;
@@ -102,24 +127,28 @@ section > div {
   width: 2em;
   display: inline-block;
 }
-.event.--goal::after {
+.logo {
+  display: block;
+  margin: 0 auto 1rem;
+  height: 100px;
+}
+.eventtype.--goal::after {
   content: "⚽";
 }
-.event {
+.eventtype {
   width: 10px;
   height: 14px;
   display: inline-block;
   margin-right: 0.5em;
 }
-.event.--yellow {
+.eventtype.--yellow {
   background-color: yellow;
   border: 1px solid #333;
 }
-.event.--red {
+.eventtype.--red {
   background-color: red;
   border: 1px solid #333;
 }
-.result.--euro {
-  font-size: 14px;
-  color: hsl(214, 63%, 48%);
+.game-counter {
+  font-weight: 700;
 }

@@ -110,6 +110,7 @@ const german_competition = [
   {
     name: "FC Bayern München",
     strength: 91,
+    logo: "bayern-munchen.gif",
     players: {
       goalkeepers: [{ name: "Neuer", strength: 70 }],
       defenders: [
@@ -132,6 +133,7 @@ const german_competition = [
   {
     name: "Borussia Dortmund",
     strength: 81,
+    logo: "borussia-dortmund.gif",
     players: {
       goalkeepers: [{ name: "Bürki", strength: 70 }],
       defenders: [
@@ -154,6 +156,7 @@ const german_competition = [
   {
     name: "FC Schalke 04",
     strength: 20,
+    logo: "schalke-04.gif",
     players: {
       goalkeepers: [{ name: "Fährmann", strength: 18 }],
       defenders: [
@@ -176,6 +179,7 @@ const german_competition = [
   {
     name: "Werder Bremen",
     strength: 24,
+    logo: "werder-bremen.gif",
     players: {
       goalkeepers: [{ name: "Pavlenka", strength: 28 }],
       defenders: [
@@ -198,6 +202,7 @@ const german_competition = [
   {
     name: "TSG 1899 Hoffenheim",
     strength: 40,
+    logo: "tsg-1899-hoffenheim.gif",
     players: {
       goalkeepers: [{ name: "Baumann", strength: 38 }],
       defenders: [
@@ -220,6 +225,7 @@ const german_competition = [
   {
     name: "Hertha BSC",
     strength: 49,
+    logo: "hertha-berlin.gif",
     players: {
       goalkeepers: [{ name: "Schwolow", strength: 39 }],
       defenders: [
@@ -242,6 +248,7 @@ const german_competition = [
   {
     name: "RB Leipzig",
     strength: 74,
+    logo: "rb-leipzig.png",
     players: {
       goalkeepers: [{ name: "Gulacsi", strength: 69 }],
       defenders: [
@@ -264,6 +271,7 @@ const german_competition = [
   {
     name: "Bayer Leverkussen",
     strength: 65,
+    logo: "bayer-leverkussen.gif",
     players: {
       goalkeepers: [{ name: "Hradecky", strength: 69 }],
       defenders: [
@@ -286,6 +294,7 @@ const german_competition = [
   {
     name: "VFL Wolfsburg",
     strength: 63,
+    logo: "vfl-wolfsburg.gif",
     players: {
       goalkeepers: [{ name: "Casteels", strength: 62 }],
       defenders: [
@@ -308,6 +317,7 @@ const german_competition = [
   {
     name: "VFB Stuttgart",
     strength: 47,
+    logo: "vfb-stuttgart.gif",
     players: {
       goalkeepers: [{ name: "Kobel", strength: 50 }],
       defenders: [
@@ -330,6 +340,7 @@ const german_competition = [
   {
     name: "FSV Mainz 05",
     strength: 24,
+    logo: "fsv-mainz.gif",
     players: {
       goalkeepers: [{ name: "Zentner", strength: 20 }],
       defenders: [
@@ -352,6 +363,7 @@ const german_competition = [
   {
     name: "Eintracht Frankfurt",
     strength: 62,
+    logo: "eintracht-frankfurt.gif",
     players: {
       goalkeepers: [{ name: "Trapp", strength: 61 }],
       defenders: [
@@ -374,6 +386,7 @@ const german_competition = [
   {
     name: "Arminia Bielefeld",
     strength: 23,
+    logo: "arminia-bielefeld.jpg",
     players: {
       goalkeepers: [{ name: "Ortega", strength: 40 }],
       defenders: [
@@ -396,6 +409,7 @@ const german_competition = [
   {
     name: "SC Freiburg",
     strength: 44,
+    logo: "sc-freiburg.gif",
     players: {
       goalkeepers: [{ name: "Müller", strength: 38 }],
       defenders: [
@@ -418,6 +432,7 @@ const german_competition = [
   {
     name: "FC Köln",
     strength: 26,
+    logo: "fc-koln.gif",
     players: {
       goalkeepers: [{ name: "Horn,T", strength: 30 }],
       defenders: [
@@ -440,6 +455,7 @@ const german_competition = [
   {
     name: "Union Berlin",
     strength: 43,
+    logo: "union-berlin.jpg",
     players: {
       goalkeepers: [{ name: "Luthe", strength: 39 }],
       defenders: [
@@ -462,6 +478,7 @@ const german_competition = [
   {
     name: "FC Augsburg",
     strength: 33,
+    logo: "fc-augsburg.gif",
     players: {
       goalkeepers: [{ name: "Gikiewicz", strength: 30 }],
       defenders: [
@@ -484,6 +501,7 @@ const german_competition = [
   {
     name: "Borussia Mönchengladbach",
     strength: 66,
+    logo: "borussia-monchengladbach.gif",
     players: {
       goalkeepers: [{ name: "Sommer", strength: 64 }],
       defenders: [

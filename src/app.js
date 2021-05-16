@@ -13,6 +13,15 @@ document
   .querySelector(".play-several-german-matches-button")
   .addEventListener("click", test_several_german_matches, false);
 
+document.querySelector("#display_debug_info").addEventListener(
+  "change",
+  function () {
+    let val = this.checked ? "inline-block" : "none";
+    document.documentElement.style.setProperty("--display-debug-info", val);
+  },
+  false
+);
+
 document
   .querySelector(".play-one-champions-league-match-button")
   .addEventListener(
