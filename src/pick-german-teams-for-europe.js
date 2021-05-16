@@ -5,11 +5,11 @@ import { get_random_number } from "./helpers.js";
 function pick_german_teams_for_europe() {
   document.getElementById("champions_league_teams").innerHTML = "";
 
-  let german_teams = german_competition;
+  let german_teams = JSON.parse(JSON.stringify(german_competition));
 
   // add/remove a bit of strength from each team randomly
   german_teams.forEach((team) => {
-    team.strength += get_random_number(-10, 10);
+    team.strength = parseFloat(team.strength) + get_random_number(-10, 10);
   });
 
   const german_teams_sorted = german_teams.sort(
