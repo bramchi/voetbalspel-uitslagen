@@ -9,7 +9,7 @@ function pick_german_teams_for_europe() {
 
   // add/remove a bit of strength from each team randomly
   german_teams.forEach((team) => {
-    team.strength += get_random_number(-15, 15);
+    team.strength += get_random_number(-10, 10);
   });
 
   const german_teams_sorted = german_teams.sort(
